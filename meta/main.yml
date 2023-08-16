@@ -1,5 +1,5 @@
 galaxy_info:
-  role_name: role_nutanix_prism_initial_password
+  role_name: role_nutanix_prism_eula
   namespace: grdavies
   author: Ross Davies
   description: Role to accept/reject the EULA after initial deployment of a Nutanix Cluster or Prism Central
