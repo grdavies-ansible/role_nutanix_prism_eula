@@ -1,3 +1,4 @@
+---
 - name: Accept EULA
   block:
     - name: Generate authorization string for "{{ nutanix_prism_eula_host }}"
