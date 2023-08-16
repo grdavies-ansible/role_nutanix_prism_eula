@@ -15,7 +15,9 @@
 
     - name: Check nutanix_prism_eula_full_name, nutanix_prism_eula_company_name and nutanix_prism_eula_job_title
       ansible.builtin.fail:
-        msg: "the variables 'nutanix_prism_eula_full_name', 'nutanix_prism_eula_company_name' and 'nutanix_prism_eula_job_title' must be provided to accept the Nutanix EULA."
+        msg:
+          "the variables 'nutanix_prism_eula_full_name', 'nutanix_prism_eula_company_name' and \
+          'nutanix_prism_eula_job_title' must be provided to accept the Nutanix EULA."
       when:
         - nutanix_prism_eula_full_name is not defined or nutanix_prism_eula_full_name == ""
         - nutanix_prism_eula_company_name is not defined or nutanix_prism_eula_company_name == ""
