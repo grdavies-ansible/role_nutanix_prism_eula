@@ -1,0 +1,14 @@
+---
+- hosts: localhost
+  gather_facts: false
+  roles:
+    - role: ../..
+  vars:
+    nutanix_prism_eula_host: 10.38.185.37
+    nutanix_prism_eula_username: admin
+    nutanix_prism_eula_password: nx2Tech165!
+    nutanix_prism_eula_eula_accept: True
+    nutanix_prism_eula_full_name: Ross Davies
+    nutanix_prism_eula_company_name: Nutanix
+    nutanix_prism_eula_job_title: SE
+    # nutanix_debug: True

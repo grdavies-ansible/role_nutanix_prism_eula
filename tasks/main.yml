@@ -1,0 +1,4 @@
+---
+# tasks file for nutanix_role_prism_accept_eula
+  - import_tasks: check_variables.yml
+  - import_tasks: eula.yml
