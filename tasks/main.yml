@@ -3,5 +3,43 @@
 - name: Check variables
   ansible.builtin.import_tasks: check_variables.yml
 
+- name: Setup connection to Nutanix API
+  ansible.builtin.include_role:
+    name: grdavies.role_nutanix_prism_api
+  vars:
+    role_nutanix_prism_api_host: "{{ role_nutanix_prism_eula_host }}"
+    role_nutanix_prism_api_username: "{{ role_nutanix_prism_eula_username }}"
+    role_nutanix_prism_api_password: "{{ role_nutanix_prism_eula_password }}"
+    role_nutanix_prism_api_port: "{{ role_nutanix_prism_eula_port }}"
+    role_nutanix_prism_api_validate_certs: "{{ role_nutanix_prism_eula_validate_certs }}"
+    role_nutanix_prism_api_debug: "{{ role_nutanix_prism_eula_debug }}"
+
 - name: Accept EULA
-  ansible.builtin.import_tasks: eula.yml
+  ansible.builtin.uri:
+    url: "https://{{ role_nutanix_prism_api_url_base }}/PrismGateway/services/rest/v1/eulas/accept"
+    method: POST
+    validate_certs: "{{ role_nutanix_prism_eula_validate_certs }}"
+    body_format: json
+    body:
+      username: "{{ role_nutanix_prism_eula_full_name }}"
+      companyName: "{{ role_nutanix_prism_eula_company_name }}"
+      jobTitle: "{{ role_nutanix_prism_eula_job_title }}"
+    headers:
+      Authorization: "{{ role_nutanix_prism_api_auth_string_b64 }}"
+    status_code: 200
+    return_content: true
+  register: nutanix_prism_eula_accept_eula
+  changed_when: nutanix_prism_eula_accept_eula.json.value
+  ignore_errors: false
+
+- name: Debug nutanix_prism_eula_accept_eula.json
+  ansible.builtin.debug:
+    var: nutanix_prism_eula_accept_eula.json
+  when:
+    - role_nutanix_prism_eula_debug
+
+- name: Failed to accept EULA
+  ansible.builtin.fail:
+    msg: "the prism EULA acceptance failed."
+  when:
+    - not nutanix_prism_eula_accept_eula.json.value
