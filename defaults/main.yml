@@ -1,9 +1,9 @@
 ---
 # defaults file for nutanix_role_prism_accept_eula
-role_nutanix_prism_eula_validate_certs: false
+role_nutanix_prism_eula_host_validate_certs: false
 role_nutanix_prism_eula_debug: false
-role_nutanix_prism_eula_username: admin
-role_nutanix_prism_eula_port: 9440
+role_nutanix_prism_eula_host_username: admin
+role_nutanix_prism_eula_host_port: 9440
 role_nutanix_prism_eula_accept: false
 # role_nutanix_prism_eula_full_name:
 # role_nutanix_prism_eula_company_name:

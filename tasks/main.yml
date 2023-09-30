@@ -8,17 +8,17 @@
     name: grdavies.role_nutanix_prism_api
   vars:
     role_nutanix_prism_api_host: "{{ role_nutanix_prism_eula_host }}"
-    role_nutanix_prism_api_username: "{{ role_nutanix_prism_eula_username }}"
-    role_nutanix_prism_api_password: "{{ role_nutanix_prism_eula_password }}"
-    role_nutanix_prism_api_port: "{{ role_nutanix_prism_eula_port }}"
-    role_nutanix_prism_api_validate_certs: "{{ role_nutanix_prism_eula_validate_certs }}"
+    role_nutanix_prism_api_host_username: "{{ role_nutanix_prism_eula_host_username }}"
+    role_nutanix_prism_api_host_password: "{{ role_nutanix_prism_eula_host_password }}"
+    role_nutanix_prism_api_host_port: "{{ role_nutanix_prism_eula_host_port }}"
+    role_nutanix_prism_api_host_validate_certs: "{{ role_nutanix_prism_eula_host_validate_certs }}"
     role_nutanix_prism_api_debug: "{{ role_nutanix_prism_eula_debug }}"
 
 - name: Accept EULA
   ansible.builtin.uri:
     url: "https://{{ role_nutanix_prism_api_url_base }}/PrismGateway/services/rest/v1/eulas/accept"
     method: POST
-    validate_certs: "{{ role_nutanix_prism_eula_validate_certs }}"
+    validate_certs: "{{ role_nutanix_prism_eula_host_validate_certs }}"
     body_format: json
     body:
       username: "{{ role_nutanix_prism_eula_full_name }}"

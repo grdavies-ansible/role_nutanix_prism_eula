@@ -7,11 +7,11 @@
       when:
         - role_nutanix_prism_eula_host is not defined or role_nutanix_prism_eula_host == ""
 
-    - name: Check role_nutanix_prism_eula_password
+    - name: Check role_nutanix_prism_eula_host_password
       ansible.builtin.fail:
-        msg: "the variable 'role_nutanix_prism_eula_password' has to be provided."
+        msg: "the variable 'role_nutanix_prism_eula_host_password' has to be provided."
       when:
-        - role_nutanix_prism_eula_password is not defined or role_nutanix_prism_eula_password == ""
+        - role_nutanix_prism_eula_host_password is not defined or role_nutanix_prism_eula_host_password == ""
 
     - name: Check role_nutanix_prism_eula_full_name, role_nutanix_prism_eula_company_name and role_nutanix_prism_eula_job_title
       ansible.builtin.fail:

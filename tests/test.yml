@@ -5,8 +5,8 @@
     - role: ../..
   vars:
     role_nutanix_prism_eula_host: 10.38.11.199
-    role_nutanix_prism_eula_username: admin
-    role_nutanix_prism_eula_password: nx2Tech682!
+    role_nutanix_prism_eula_host_username: admin
+    role_nutanix_prism_eula_host_password: nx2Tech682!
     role_nutanix_prism_eula_accept: True
     role_nutanix_prism_eula_full_name: Ross Davies
     role_nutanix_prism_eula_company_name: Nutanix
